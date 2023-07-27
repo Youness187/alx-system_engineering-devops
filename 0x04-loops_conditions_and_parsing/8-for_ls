@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Bash script that displays The content of the current directory
 for f in *
 do
     echo "$f" | cut -d "-" -f2-
