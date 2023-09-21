@@ -51,9 +51,7 @@ and login to docker and start
 -$ systemctl start docker
 ```
 
-``` bash
 and now pull and run the Docker image sylvainkalache/264–1:
-```
 
 ``` bash
 -$ docker run -p 2222:22 -d -ti sylvainkalache/264–1
