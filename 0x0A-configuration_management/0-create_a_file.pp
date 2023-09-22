@@ -1,3 +1,4 @@
+#!/usr/bin/puppet
 # create a file in /tmp.
 
 file { 'tmp/school':
