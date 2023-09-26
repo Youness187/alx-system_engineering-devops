@@ -2,12 +2,10 @@
 # Install nginx
 sudo apt-get update -y
 sudo apt-get install nginx -y
-sudo service nginx start
-sudo ufw allow 'Nginx HTTP'
-sudo chown -R "$USER":"$USER" /var/www/html
-sudo chmod -R 755 /var/www
-echo -e "Hello World!" > /var/www/html/index.nginx-debian.html
-sudo sed -i "24i\\\trewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
-echo -e "Ceci n'est pas une page" > /var/www/html/404.html
-sudo sed -i "25i\\\terror_page 404 /error_404.html;" /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+conf="\tlocation /redirect_me {\n\t\treturn 301 https:\/\/www.youtube.com\/watch\?v=QH2-TGUlwu4;\n\t}"
+err="\n\\terror_page 404 /404.html;\n\tlocation = /var/www/html/404.html {\n\t\tinternal;\n\t}"
+sudo sed -i "s/server_name _;/$conf/" /etc/nginx/sites-available/default
+sudo sed -i "s/server_name _;/$err/" /etc/nginx/sites-enabled/default
 sudo service nginx restart
