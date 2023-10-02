@@ -3,11 +3,9 @@ package { 'nginx':
   ensure => installed,
 }
 
-file_line { 'default':
-  ensure => 'present',
-  path   => '/etc/nginx/sites-available/default',
-  after  => 'listen 80 default_server;',
-  line   => "\tadd_header X-Served-By \$HOSTNAME;",
+exec { 'command':
+  command  => 'sudo sed -i "s/server_name _;/server_name _;\n\tadd_header X-Served-By \$hostname;/" /etc/nginx/sites-available/default',
+  provider => shell,
 }
 
 service { 'nginx':
