@@ -3,11 +3,13 @@ package { 'nginx':
   ensure => installed,
 }
 
-file_line { 'default':
+$lin = "add_header X-Served-By ${hostname};"
+
+-> file_line { 'default':
   ensure => 'present',
   path   => '/etc/nginx/sites-available/default',
   after  => 'listen 80 default_server;',
-  line   => "add_header X-Served-By ${hostname};",
+  line   => $lin,
 }
 
 service { 'nginx':
