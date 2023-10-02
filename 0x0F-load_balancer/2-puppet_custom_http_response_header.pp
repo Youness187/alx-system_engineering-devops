@@ -6,7 +6,8 @@ package { 'nginx':
 file_line { 'default':
   ensure => 'present',
   path   => '/etc/nginx/sites-available/default',
-  line   => '/^\s+server_name .+;/a\ \\tadd_header X-Served-By \$HOSTNAME\;\n',
+  after  => 'server_name _;',
+  line   => 'add_header X-Served-By $HOSTNAME;',
 }
 
 service { 'nginx':
