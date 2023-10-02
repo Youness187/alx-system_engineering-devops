@@ -1,4 +1,10 @@
 # Configure Nginx so that its HTTP response contains a custom header (on web-01 and web-02)
+
+exec { 'update':
+  command  => 'sudo apt-get update',
+  provider => shell,
+}
+
 package { 'nginx':
   ensure => installed,
 }
