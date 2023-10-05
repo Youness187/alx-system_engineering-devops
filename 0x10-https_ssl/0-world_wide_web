@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Bash script that will display information about subdomains
+query_subdomain() {
+  dig_output=$(dig "$2.$1" | awk '/ANSWER SECTION:/ {getline; print}')
+  record_type=$(echo "$dig_output" | awk '{print $4}')
+  destination=$(echo "$dig_output" | awk '{print $5}')
+
+  echo "The subdomain $2 is a $record_type record and points to $destination"
+}
+
+if [ $# -eq 1 ]; then
+  subdomains=("www" "lb-01" "web-01" "web-02")
+
+  for subdomain in "${subdomains[@]}"; do
+    query_subdomain "$1" "$subdomain"
+  done
+elif [ $# -eq 2 ]; then
+  query_subdomain "$1" "$2"
+fi
