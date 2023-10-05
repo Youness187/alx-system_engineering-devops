@@ -30,14 +30,10 @@ defaults
     errorfile 503 /etc/haproxy/errors/503.http
     errorfile 504 /etc/haproxy/errors/504.http
 
-frontend www-https
+listen www-https
+    bind *:80
     bind *:443 ssl crt /etc/haproxy/ssl/www.dyns.tech.pem
-    reqadd X-Forwarded-Proto:\ https
-    default_backend www-backend
-
-backend www-backend
+    redirect scheme https code 301 if !{ ssl_fc }
     balance roundrobin
-    redirect scheme https if !{ ssl_fc }
-    balance roundrobin
-    server 367659-web-01 54.173.75.28:80 check
-    server 375626-web-02 54.197.74.184:80 check
+    server server1 18.207.1.87:80 check
+    server server2 52.206.189.175:80 check
