@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Bash script that will display information about subdomains
+
 query_subdomain() {
-  dig_output=$(dig "$2.$1" | awk '/ANSWER SECTION:/ {getline; print}')
+  dig_output=$(dig "$2.$1" | grep -A1 'ANSWER SECTION:' | tail -n 1)
   record_type=$(echo "$dig_output" | awk '{print $4}')
   destination=$(echo "$dig_output" | awk '{print $5}')
 
