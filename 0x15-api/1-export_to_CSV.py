@@ -13,7 +13,7 @@ if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com"
     usr_api = requests.get(f"{url}/users/{id}").json()
     task_api = requests.get(f"{url}/todos?userId={id}").json()
-    name = usr_api.get("name")
+    name = usr_api.get("username")
 
     with open(f"{id}.csv", "w") as f:
         for task in task_api:
