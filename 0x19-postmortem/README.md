@@ -49,7 +49,7 @@ The engineering team fixed the issue by correcting the mistyped file name in the
 -   Implement automated tests to catch errors before code is deployed.
 -   Improve monitoring to detect and alert on errors more quickly.
 
-**A List of Tasks to Address the Issue (Be Very Specific, Like a TODO, Example: Patch Nginx Server, Add Monitoring on Server Memory)**
+**A List of Tasks to Address the Issue**
 
  - [x] Update wp-settings.php file to correct mistyped file name.
 
