@@ -9,7 +9,7 @@
 
 **Root Cause:** A mistyped file name in the wp-settings.php file caused the Apache server to prematurely shut down.
 
-### ** Timeline**
+### **Timeline**
 
 -   **00:00 PST:** Users begin reporting a 504 error when trying to access the website.
 -   **00:05 PST:** The engineering team is alerted to the issue.
