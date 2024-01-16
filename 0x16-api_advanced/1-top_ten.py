@@ -13,8 +13,8 @@ def top_ten(subreddit):
     """
 
     url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
-    headers = {"User-Agent": "MyBot/1.0 (DaYounes)"}
-    response = requests.get(url, headers=headers)
+    headers = {"User-Agent": "MyCustomUserAgent/1.0"}
+    response = requests.get(url, allow_redirects=False, headers=headers)
 
     if response.status_code == 200:
         data = response.json()
@@ -24,4 +24,4 @@ def top_ten(subreddit):
             title = post["data"]["title"]
             print(title)
     else:
-        print(None)
+        print("None")
