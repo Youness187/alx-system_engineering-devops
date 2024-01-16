@@ -23,7 +23,5 @@ def top_ten(subreddit):
         for post in posts:
             title = post["data"]["title"]
             print(title)
-    elif response.status_code == 404:
-        print(f"Subreddit '{subreddit}' not found.")
     else:
-        print(f"Error: {response.status_code}")
+        print(None)
