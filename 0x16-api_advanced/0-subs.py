@@ -12,7 +12,7 @@ def number_of_subscribers(subreddit):
     """
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
 
-    headers = {"User-Agent": "MyCustomUserAgent/1.0"}
+    headers = {"User-Agent": "Api.advancd:v1.0.0 (by /u/dyns)"}
     response = requests.get(url, allow_redirects=False, headers=headers)
 
     if response.status_code == 404:
