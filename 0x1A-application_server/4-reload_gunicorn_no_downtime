@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
 # Gracefully reloads Gunicorn.
 
-pgrep gunicorn | xargs kill -HUP
+gunicorn_pid=$(ps auxf | grep gunicorn | grep -v grep | awk '{print $2}')
+
+if [ -z "$gunicorn_pid" ]; then
+  exit 1
+fi
+
+kill -HUP "$gunicorn_pid"
