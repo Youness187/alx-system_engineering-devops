@@ -8,3 +8,4 @@ if [ -z "$gunicorn_pid" ]; then
 fi
 
 kill -HUP "$gunicorn_pid"
+
