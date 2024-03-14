@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # Gracefully reloads Gunicorn.
 
-gunicorn_pid=$(ps auxf | grep gunicorn | grep -v grep | awk '{print $2}')
+gun_pid=$(ps auxf | grep gunicorn | grep -v grep | awk '{print $2}')
 
-if [ -z "$gunicorn_pid" ]; then
+if [ -z "$gun_pid" ]; then
   exit 1
 fi
 
-kill -HUP "$gunicorn_pid"
+kill -HUP "$gun_pid"
 
