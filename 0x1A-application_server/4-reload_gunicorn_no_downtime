@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
 # Gracefully reloads Gunicorn.
 
-pid=$(pgrep auxf | grep gunicorn | grep -v grep | grep master | awk '{print $2}')
-kill -HUP "$pid"
-sleep 5
-pkill -f gunicorn
+pgrep gunicorn | xargs kill -HUP
